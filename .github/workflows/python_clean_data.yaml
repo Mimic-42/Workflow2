@@ -24,7 +24,7 @@ jobs:
         run: |
           pwd
           ls -al
-          cd ModelCleaning
+          cd ModelClearning
           pip install pandas
           python cleandata.py
           ls -al
