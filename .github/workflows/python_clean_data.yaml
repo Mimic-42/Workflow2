@@ -4,6 +4,7 @@ on:
   workflow_dispatch
 
 jobs:
+  
   job1:
     runs-on: ubuntu-latest
     steps:
@@ -12,4 +13,23 @@ jobs:
           echo ${{ github.workspace }}
           echo $GITHUB_WORKSPACE
 
+  data_pipeline:
+    name: data_pipeline
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@4
 
+      - name: clean_data
+        run: |
+          pwd
+          ls -al
+          cd ModelCleaning
+          pip install pandas
+          python cleandata.py
+          ls -al
+
+      - name: train_test_dataset
+        run: |
+          pip install scikit-learn joblib
+          python ModelCleaning/train_test_dataset.py
